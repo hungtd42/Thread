@@ -152,7 +152,7 @@ public class client {
             try {
                 while((str=read.readLine())!=null){
                     ShowTextMess(str);
-                    textArea_mess.setCaretPosition(textArea_mess.getText().length()); 
+                    textArea_mess.setCaretPosition(textArea_mess.getText().length()); //setCaretPosition lay vi tri hien tai cua con tro
                 }
             } catch (IOException ex) {
                 ShowTextMess("Und");
