@@ -42,7 +42,7 @@ public class Server {
             try{
                 Socket socket = sever.accept();
                 PrintWriter write = new PrintWriter(socket.getOutputStream());//viet va nhan enter r gui dl 
-                list_write.add(write);//luu PrintWrite v‡o m?ng list_write ki?m tra m‡ g?i sang client
+                list_write.add(write);//luu PrintWrite v√†o m?ng list_write ki?m tra m√† g?i sang client
                 
                 //System.out.println(list_write);
                 Thread thread = new Thread(new ClientThread(socket));
@@ -98,12 +98,18 @@ public class Server {
             try {
                 while((string = read.readLine())!=null){
                     textConsole("Client:\n"+string, lv_succ);
-                    sendToAllClient(string); //nhan dl khi nhan button or enter su dung iterator +hasNext ki?m tra v‡ g?i di
+                    sendToAllClient(string); //nhan dl khi nhan button or enter su dung iterator +hasNext ki?m tra v√† g?i di
                     
                     if (string.contains("hi")) {
                         botSay("Hello..");
-                    }else if(string.contains("H")){
+                    }else if(string.contains("h")){
                         botSay("Men");
+                    }else if(string.contains("how are you")){
+                        botSay("thx. i'm fine");
+                    }else if(string.contains("")){
+                        botSay("Men");
+                    }else{
+                        botSay("???");
                     }
                 }
             } catch (IOException ex) {
@@ -112,9 +118,9 @@ public class Server {
         }
     }
     public void sendToAllClient(String str){
-        Iterator it = list_write.iterator();//kiem tra cac ph?n t? ? m?ng aray
+        Iterator it = list_write.iterator();//kiem tra cac phan tu cua mang aray
         //System.out.println(it);
-        while(it.hasNext()){//hasNext ki?m tra ti?p t?c c?a list_write  v‡ d?y dl di
+        while(it.hasNext()){//hasNext kiem tra ti?p t?c c?a list_write  v√† d?y dl di
             PrintWriter write = (PrintWriter) it.next();
             write.println(str);
             write.flush();//d?y du li?u di
